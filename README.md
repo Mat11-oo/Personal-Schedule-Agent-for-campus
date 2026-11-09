@@ -91,11 +91,11 @@ npm test
 
 如果页面可用但 Agent 回复失败，可先确认通过 `npm start` 启动完整项目，再检查终端中的 Agent 启动日志和模型配置。遇到端口占用，可分别设置 `PORT` 和 `PERSONAL_AGENT_PORT`。安装依赖需要可访问的软件源或可用的本地缓存。
 
-提交前可用 `git status --short --ignored` 核对本地配置和运行数据确实被忽略，用 `git diff --cached --stat` 确认待发布文件范围，并检查提交作者和签名信息。开源前请确认学屿自有代码采用的许可证。
+提交前可用 `git status --short --ignored` 核对本地配置和运行数据确实被忽略，用 `git diff --cached --stat` 确认待发布文件范围，并检查提交作者和签名信息。
 
 ## 版权与许可
 
-项目版权署名为 Mat11-oo。仓库内 Personal Agent 组件的许可见 [MIT 许可证](personal-agent/LICENSE)。学屿自有代码的开源许可另行确定。
+本项目采用 [MIT 许可证](LICENSE)，版权署名为 Mat11-oo。仓库内 Personal Agent 组件的许可证也保存在 [组件目录](personal-agent/LICENSE)。
 
 ## 可体验的流程
 
