@@ -68,6 +68,26 @@ npm start
 | `personal-agent/.env.example` | 可提交的配置模板 |
 | `test/` | 学屿模型接入和 AI 学堂的自动测试 |
 
+### 工作原理
+
+```mermaid
+flowchart TD
+    User["学生在「找学屿」提问"] --> Route{"本地资料能直接回答？"}
+    Route -->|可以| Local["浏览器读取当前学校的演示资料或本地个人数据"]
+    Route -->|需要模型| Context["组装问题与本校公开资料"]
+    Consent["本次勾选的个人资料"] --> Context
+    Context --> Proxy["学屿 Node 同源代理"]
+    Proxy --> Agent["Personal Agent · FastAPI"]
+    Agent --> Model["已配置的模型或离线模式"]
+    Model --> Reply["返回回答和可选功能标识"]
+    Local --> Chat["对话显示回答与可选功能按钮"]
+    Reply --> Chat
+    Chat -->|学生点击按钮| Tool["展开校园功能或打开表单"]
+    Tool -->|学生确认计划| Todo["本地校验并保存至「今日」待办"]
+```
+
+课表、未完成待办和已报名活动默认不随模型请求发送。用户按次勾选后，所选资料才会加入该次请求。
+
 ### 配置模型
 
 先运行一次 `npm start` 生成 `personal-agent/.env`，保留其中的 `AUTH_SECRET`。使用 Kimi 时，可按模板填写 `KIMI_API_KEY`，其他兼容服务可配置 `LLM_FAST_*` 和 `LLM_STRONG_*`。保存后重启。详细字段见 [模型网关说明](personal-agent/docs/llm-gateway.md)。
