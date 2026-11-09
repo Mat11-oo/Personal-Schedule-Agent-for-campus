@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="340" viewBox="0 0 600 340" fill="none">
+  <rect width="600" height="340" fill="#DBE8CF"/>
+  <circle cx="435" cy="89" r="43" fill="#EDD585"/>
+  <path d="M45 72h43m10 0h18m42 34h41m314 31h33" stroke="#F9F9E9" stroke-width="5" stroke-linecap="round"/>
+  <path d="m0 211 124-113 123 105 107-83 149 101 97-55v174H0V211Z" fill="#ACCAA4"/>
+  <path d="m0 231 134-68 109 53 122-60 138 92 97-53v145H0V231Z" fill="#86AD86"/>
+  <path d="M0 275c117-58 213-70 304-25 99 49 201 10 296-3v93H0v-65Z" fill="#5B8B6C"/>
+  <path d="M121 340c20-42 54-58 123-69 73-12 81-40 49-60-12-7-27-12-40-16" stroke="#EFE6BF" stroke-width="65"/>
+  <path d="M121 340c20-42 54-58 123-69 73-12 81-40 49-60-12-7-27-12-40-16" stroke="#D7BB87" stroke-width="2" stroke-dasharray="11 10"/>
+  <path d="M93 340c23-57 64-75 142-87 53-9 58-23 40-32" stroke="#FAF0D3" stroke-width="2"/>
+  <path d="M151 340c19-30 44-43 100-52 93-15 108-54 63-84" stroke="#FAF0D3" stroke-width="2"/>
+  <path d="M67 243v-40m17 37v-56m414 91v-58m25 55v-40" stroke="#486F54" stroke-width="4" stroke-linecap="round"/>
+  <path d="m67 174-21 40h42l-21-40Zm17-20-25 47h50l-25-47Zm414 25-25 48h50l-25-48Zm25 27-18 34h36l-18-34Z" fill="#47765A"/>
+  <path d="m67 190-17 33h34l-17-33Zm17-17-20 40h40l-20-40Zm414 25-21 40h42l-21-40Z" fill="#5A8A68"/>
+  <circle cx="328" cy="219" r="9" fill="#C58E68"/>
+  <path d="m321 231 20 3 9 25-20 6-9-34Z" fill="#F6E9C9"/>
+  <path d="m326 237-13 17-14-2m42-11 13 5 11-10" stroke="#C58E68" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="m332 264 11 15-13 18m13-35 20 10 15 1" stroke="#2F5648" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="m328 297 9 2m41-26 7 4" stroke="#E3C16F" stroke-width="6" stroke-linecap="round"/>
+  <path d="M337 215c-1-10-18-12-19-1l19 1Z" fill="#345B48"/>
+  <path d="m401 294 3-10m2 11 6-7m-286-39 3-10m2 11 6-7m316 67 3-10m2 11 6-7" stroke="#A0BD83" stroke-width="2" stroke-linecap="round"/>
+  <path d="m225 74 6-4 6 4m11 8 5-3 5 3" stroke="#729673" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

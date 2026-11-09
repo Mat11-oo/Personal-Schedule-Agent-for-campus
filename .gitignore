@@ -1,0 +1,42 @@
+# Local credentials and environment overrides
+.env
+.env.*
+!.env.example
+.envrc
+secrets.yaml
+secrets.yml
+secrets.json
+secrets.toml
+credentials.yaml
+credentials.yml
+credentials.json
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Local deployment metadata
+/.openai/
+.vercel/
+
+# Runtime state, dependencies and caches
+/personal-agent/data/
+.venv/
+node_modules/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+*.sqlite
+*.sqlite3
+*.db
+*.db-wal
+*.db-shm
+*.log
+.DS_Store
+
+# Local model test transcripts
+/personal-agent/docs/live-smoke-report.md
+
+# Upstream development fixtures are excluded from this release
+/personal-agent/tests/
