@@ -6,7 +6,32 @@
 >
 > 静态托管只提供前端页面；课表、通知、待办、排程等本机功能可直接体验，对话与通知提炼需要按下方说明在本地运行完整服务。
 
-[快速开始](#本地运行) · [示例任务](#可以怎么问) · [架构与目录](#架构与目录) · [数据与隐私](#数据与隐私) · [开发与验证](#开发与验证) · [版权与许可](#版权与许可)
+[界面预览](#界面预览) · [快速开始](#本地运行) · [示例任务](#可以怎么问) · [架构与目录](#架构与目录) · [数据与隐私](#数据与隐私) · [开发与验证](#开发与验证) · [版权与许可](#版权与许可)
+
+## 界面预览
+
+<p align="center">
+  <img src="docs/preview/home-desktop.png" alt="学屿桌面端首页：今天的课与待办" width="100%" />
+</p>
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/preview/teaching-desktop.png" alt="AI 学堂：把一个知识点讲清楚" /></td>
+    <td width="50%"><img src="docs/preview/features-desktop.png" alt="功能中心：14 项校园服务" /></td>
+  </tr>
+  <tr>
+    <td align="center"><sub>AI 学堂：把一个知识点讲清楚</sub></td>
+    <td align="center"><sub>功能中心：课表、考试、竞赛与 AI 工作区</sub></td>
+  </tr>
+</table>
+
+<p align="center">
+  <img src="docs/preview/home-mobile.png" alt="移动端首页" width="320" />
+  &nbsp;&nbsp;&nbsp;
+  <img src="docs/preview/forum-mobile.png" alt="移动端同学广场" width="320" />
+</p>
+
+<sub>截图来自本仓库的静态演示版（`dist/`），内容均为演示数据。</sub>
 
 ## 对话首页
 
