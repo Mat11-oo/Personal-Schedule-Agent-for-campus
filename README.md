@@ -11,27 +11,33 @@
 ## 界面预览
 
 <p align="center">
-  <img src="docs/preview/home-desktop.png" alt="学屿桌面端首页：今天的课与待办" width="100%" />
+  <img src="docs/preview/agent-desktop.png" alt="学屿桌面端对话首页：找学屿" width="100%" />
 </p>
+
+<p align="center"><sub>「找学屿」：对话式首页，查课表、看通知、安排待办都在这里</sub></p>
 
 <table>
   <tr>
-    <td width="50%"><img src="docs/preview/teaching-desktop.png" alt="AI 学堂：把一个知识点讲清楚" /></td>
-    <td width="50%"><img src="docs/preview/features-desktop.png" alt="功能中心：14 项校园服务" /></td>
+    <td width="50%"><img src="docs/preview/home-desktop.png" alt="今日：今天的课与待办" /></td>
+    <td width="50%"><img src="docs/preview/teaching-desktop.png" alt="讲义与教学视频：把一个知识点讲清楚" /></td>
   </tr>
   <tr>
-    <td align="center"><sub>AI 学堂：把一个知识点讲清楚</sub></td>
-    <td align="center"><sub>功能中心：课表、考试、竞赛与 AI 工作区</sub></td>
+    <td align="center"><sub>今日：今天的课、待办与常用功能</sub></td>
+    <td align="center"><sub>讲义与教学视频：从一份讲义到一段微课</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="docs/preview/features-desktop.png" alt="功能中心：14 项校园服务" /></td>
+    <td width="50%" valign="middle" align="center"><sub>功能中心：课表、成绩、考试、竞赛与校园生活服务集中在一处</sub></td>
   </tr>
 </table>
 
 <p align="center">
-  <img src="docs/preview/home-mobile.png" alt="移动端首页" width="320" />
+  <img src="docs/preview/agent-mobile.png" alt="移动端找学屿" width="300" />
   &nbsp;&nbsp;&nbsp;
-  <img src="docs/preview/forum-mobile.png" alt="移动端同学广场" width="320" />
+  <img src="docs/preview/home-mobile.png" alt="移动端今日首页" width="300" />
 </p>
 
-<sub>截图来自本仓库的静态演示版（`dist/`），内容均为演示数据。</sub>
+<sub>截图来自本仓库的静态演示版（`dist/`），与桌面版共用同一套前端；内容均为演示数据。</sub>
 
 ## 对话首页
 
@@ -50,6 +56,15 @@
 ## GitHub Pages 在线演示
 
 仓库通过 `.github/workflows/pages.yml` 把 `dist/` 发布到 GitHub Pages。首次发布时在仓库 **Settings → Pages** 把 Source 设为 **GitHub Actions**，之后每次推送 `main` 会自动重新部署。站点地址为 https://mat11-oo.github.io/Personal-Schedule-Agent-for-campus/ 。页面使用相对路径与 hash 路由，可直接在该子路径下运行；`/api/personal-agent/*` 在静态托管中不存在，相关功能会提示暂时无法连接，其余功能不受影响。
+
+## 1.8 对话首页与桌面版同步
+
+- 打开学屿直接进入「找学屿」对话首页：一句欢迎语、一个输入框，常用请求在对话里展开，功能页从对话中打开。导航为「找学屿、今日、校园、我的」。
+- 手机端不再使用底部标签栏，改为点左上角「学屿」打开抽屉导航；对话页为沉浸式布局，输入框固定在底部。
+- 「AI 学堂」并入「找学屿」，以「讲义与教学视频」工具页出现，顶部提供「返回对话」；模型配置入口在「我的 → AI 模型设置」。
+- 本仓库的 `dist/` 与桌面版共用同一份前端：桌面应用只是 Swift 外壳，加载本机 `http://localhost:4173/#agent`，所以网页版、桌面版界面一致。之前 Pages 上的演示是旧快照（1.7），已同步到 1.8。
+- 本机服务新增 `POST /api/personal-agent/model-settings` 与 `POST /api/personal-agent/lesson`，模型密钥只写在本机 `personal-agent/data/xueyu-model-settings.json`，不会进入前端或仓库。
+- 验证：`npm run check` 与 12 项 `node --test` 全部通过。
 
 ## 1.7 简洁首页与个人助手
 

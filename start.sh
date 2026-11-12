@@ -4,6 +4,7 @@ cd "$(dirname "$0")"
 agent_dir="$PWD/personal-agent"
 venv="$agent_dir/.venv"
 agent_port="${PERSONAL_AGENT_PORT:-18787}"
+export XUEYU_MODEL_SETTINGS="$agent_dir/data/xueyu-model-settings.json"
 
 if [[ ! -x "$venv/bin/python" ]]; then
   if command -v uv >/dev/null 2>&1; then

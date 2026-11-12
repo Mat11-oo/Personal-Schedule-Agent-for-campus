@@ -43,7 +43,7 @@ window.createCampusFeatures = function(ctx) {
     {id:'finals',group:'study',icon:'file',title:'校内期末考试',description:'本校课程考试的独立安排',keywords:'考试 考场 教务'},
     {id:'competitions',group:'study',icon:'graduation',title:'竞赛活动',description:'蓝桥杯、建模与校内交流',keywords:'比赛 蓝桥杯 数学 建模'},
     {id:'exams',group:'study',icon:'book',title:'语言与资格考试',description:'四六级、雅思、普通话、教资',keywords:'考试 CET IELTS 证书'},
-    {id:'ai',group:'study',icon:'sparkle',title:'AI 工作区',description:'校园问答与 AI 学堂',keywords:'模型 API 学习 讲义 视频'},
+    {id:'agent',group:'study',icon:'sparkle',title:'找学屿',description:'校园问答、讲义与教学视频',keywords:'模型 API 学习 讲义 视频'},
     {id:'map',group:'life',icon:'map',title:'校园地图',description:'找到教室，也发现校园角落',keywords:'卡通 地点 路线 导航'},
     {id:'library',group:'life',icon:'book',title:'图书借阅',description:'借阅记录与续借服务',action:true,keywords:'图书馆 书籍 到期'},
     {id:'campus-card',group:'life',icon:'card',title:'校园一卡通',description:'查看自己的校园卡信息',action:true,keywords:'余额 卡片'},
