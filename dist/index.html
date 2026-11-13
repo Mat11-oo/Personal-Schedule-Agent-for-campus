@@ -7,7 +7,11 @@
     <meta name="description" content="学屿：看清今天、轻松记事，找学屿帮你安排校园生活。互动演示版。" />
     <title>学屿 · 让校园生活刚刚好</title>
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
-    <link rel="stylesheet" href="styles.css?v=1.7.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;450;500;550;600;650;700;750;800&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;450;500;550;600;650;700;750;800&display=swap" /></noscript>
+    <link rel="stylesheet" href="styles.css?v=1.8.20" />
     <link rel="stylesheet" href="community.css?v=1.7.0" />
     <link rel="stylesheet" href="ai.css?v=1.7.0" />
     <link rel="stylesheet" href="features.css?v=1.7.0" />
@@ -25,8 +29,65 @@
     <link rel="stylesheet" href="personal.css?v=1.8.19" />
     <script src="personal.js?v=1.8.14" defer></script>
     <script src="app.js?v=1.8.19" defer></script>
+    <style>
+      #splash{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:32px;background:radial-gradient(120% 90% at 50% 28%,#2f7157 0%,#245c49 48%,#183f33 100%);color:#f2f6e9;text-align:center;animation:splash-out .18s 620ms both}
+      #splash.splash-leaving{opacity:0;visibility:hidden;pointer-events:none;animation:none}
+      #splash::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 42% at 50% 80%,#ffffff14,transparent 72%);pointer-events:none}
+      .splash-inner{position:relative;max-width:680px}
+      .splash-mark{width:96px;height:96px;margin:0 auto 24px;display:grid;place-items:center;border-radius:32px;background:#ffffff0f;border:1px solid #ffffff1f;box-shadow:0 18px 50px #0d2b2216;animation:splash-pop .4s cubic-bezier(.2,.8,.3,1) both}
+      .splash-mark svg{width:56px;height:56px;overflow:visible}
+      .splash-mark path{fill:none;stroke:#e7f0c9;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:160;stroke-dashoffset:160;animation:splash-draw .34s .02s ease-out forwards}
+      .splash-mark circle{fill:#e6ba66;opacity:0;animation:splash-fade .3s .24s ease-out forwards}
+      .splash-name{margin:0 0 26px;font-size:12px;letter-spacing:.34em;color:#cfdcc2;opacity:0;animation:splash-rise .3s .06s ease-out forwards}
+      .splash-slogan{margin:0;font-size:clamp(17px,2.2vw,22px);font-weight:500;line-height:1.95;letter-spacing:.02em;color:#f2f6e9;opacity:0;animation:splash-rise .32s .12s ease-out forwards}
+      .splash-slogan span{display:block;margin-top:4px;font-weight:400;font-size:.92em;color:#d5e2c8}
+      .splash-link{display:block;margin:26px auto 0;opacity:0;animation:splash-rise .24s .22s ease-out forwards}
+      @keyframes splash-pop{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:none}}
+      @keyframes splash-draw{to{stroke-dashoffset:0}}
+      @keyframes splash-fade{to{opacity:1}}
+      @keyframes splash-rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+      @keyframes splash-out{from{opacity:1;visibility:visible}to{opacity:0;visibility:hidden}}
+      @media (prefers-reduced-motion:reduce){#splash,.splash-mark,.splash-mark path,.splash-mark circle,.splash-name,.splash-slogan{animation:none!important;opacity:1!important;transition:none!important}.splash-mark path{stroke-dashoffset:0}}
+      @media print{#splash{display:none}}
+    </style>
+    <noscript><style>#splash{display:none}</style></noscript>
   </head>
   <body>
+    <div id="splash" role="status" aria-label="学屿正在打开">
+      <div class="splash-inner">
+        <div class="splash-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 39c10-3 10-21 20-21s10 18 19 21"/>
+            <path d="M15 47c11-5 23-5 34 0M30 29v13"/>
+            <circle cx="47" cy="18" r="4"/>
+          </svg>
+        </div>
+        <p class="splash-name">学屿 · CAMPUS ISLAND</p>
+        <p class="splash-slogan">我们本是各自独立的岛屿，<span>愿我跨越隔阂，来到你的身边，建立联结。</span></p>
+        <svg class="splash-link" width="150" height="20" viewBox="0 0 150 20" aria-hidden="true">
+          <path d="M8 13c24-11 46-11 67 0s43 11 67 0" fill="none" stroke="#cfe0bd" stroke-width="1" stroke-dasharray="4 6" opacity=".6"/>
+          <circle cx="8" cy="13" r="2.4" fill="#e6ba66"/>
+          <circle cx="142" cy="13" r="2.4" fill="#e6ba66"/>
+        </svg>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var splash = document.getElementById('splash');
+        if (!splash) return;
+        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var remove = function () { splash.remove(); };
+        if (reduce) {
+          setTimeout(function () { splash.classList.add('splash-leaving'); remove(); }, 300);
+          return;
+        }
+        // 0.8s 由 CSS 动画驱动（620ms 停留 + 180ms 淡出），不依赖主线程定时器
+        splash.addEventListener('animationend', function (event) {
+          if (event.target === splash && event.animationName === 'splash-out') remove();
+        });
+        setTimeout(function () { if (document.body.contains(splash)) splash.remove(); }, 1100);
+      })();
+    </script>
     <a class="skip-link" href="#main">跳到主要内容</a>
     <div id="app"></div>
     <div id="modal-root"></div>
