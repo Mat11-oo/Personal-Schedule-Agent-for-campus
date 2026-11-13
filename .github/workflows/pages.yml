@@ -1,4 +1,4 @@
-name: Deploy 学屿 demo to GitHub Pages
+name: Deploy 学屿 PoC to GitHub Pages
 
 on:
   push:
