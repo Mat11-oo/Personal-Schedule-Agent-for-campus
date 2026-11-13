@@ -9,6 +9,7 @@
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" media="print" onload="this.media='all'" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;450;500;550;600;650;700;750;800&display=swap" media="print" onload="this.media='all'" />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;450;500;550;600;650;700;750;800&display=swap" /></noscript>
     <link rel="stylesheet" href="styles.css?v=1.8.20" />
@@ -27,43 +28,50 @@
     <script src="teaching.js?v=1.8.11" defer></script>
     <link rel="stylesheet" href="refresh.css?v=1.7.0" />
     <link rel="stylesheet" href="personal.css?v=1.8.19" />
+    <link rel="stylesheet" href="family.css?v=1.3" />
     <script src="personal.js?v=1.8.14" defer></script>
     <script src="app.js?v=1.8.19" defer></script>
     <style>
-      #splash{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:32px;background:radial-gradient(120% 90% at 50% 28%,#2f7157 0%,#245c49 48%,#183f33 100%);color:#f2f6e9;text-align:center;animation:splash-out .2s 1300ms both}
+      #splash{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:32px;background:#fbfaf9;color:#343433;text-align:center;animation:splash-out .2s 1300ms both}
       #splash.splash-leaving{opacity:0;visibility:hidden;pointer-events:none;animation:none}
-      #splash::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 42% at 50% 80%,#ffffff14,transparent 72%);pointer-events:none}
       .splash-inner{position:relative;max-width:640px}
-      .splash-scene{width:min(600px,86vw);margin:0 auto 18px;opacity:0;animation:splash-rise .45s .05s ease-out forwards}
+      .splash-scene{width:min(600px,86vw);margin:0 auto 16px;opacity:0;animation:splash-rise .45s .05s ease-out forwards}
       .splash-scene svg{display:block;width:100%;height:auto;overflow:visible}
-      .scene-land{fill:#37755e}
-      .scene-rim{fill:none;stroke:#cfe0bd;stroke-width:2.6;stroke-linecap:round;opacity:.5}
-      .scene-wave{fill:none;stroke:#8fb69d;stroke-width:2;stroke-linecap:round;opacity:.45}
-      .scene-wave.wave-2{opacity:.22}
-      .scene-sun{fill:#e6ba66}
+      .scene-land{stroke:#343433;stroke-width:1.6;stroke-linejoin:round}
+      .island-left .scene-land{fill:#ffcd6c}
+      .island-right .scene-land{fill:#64c6ff}
+      .scene-rim{fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:round;opacity:.9}
+      .scene-wave{fill:none;stroke:#343433;stroke-width:1.4;stroke-linecap:round;opacity:.32}
+      .scene-wave.wave-2{opacity:.15}
+      .scene-sun{fill:#ffcd6c;stroke:#343433;stroke-width:1.6}
       .island-left{animation:island-left .95s cubic-bezier(.2,.7,.25,1) .05s both}
       .island-right{animation:island-right .95s cubic-bezier(.2,.7,.25,1) .12s both}
       @keyframes island-left{0%{opacity:0;transform:translateX(-30px)}35%{opacity:1}100%{opacity:1;transform:none}}
       @keyframes island-right{0%{opacity:0;transform:translateX(30px)}35%{opacity:1}100%{opacity:1;transform:none}}
-      .bridge-line{fill:none;stroke:#e6ba66;stroke-width:1.3;stroke-linecap:round;opacity:0;stroke-dasharray:1;stroke-dashoffset:1;animation:bridge-draw .42s .68s ease-out forwards}
-      @keyframes bridge-draw{to{opacity:.45;stroke-dashoffset:0}}
-      .stone{stroke:#e6ba66;stroke-width:2.6;stroke-linecap:round;opacity:0;animation:splash-fade .22s ease-out forwards}
+      .stone{stroke:#343433;stroke-width:2.4;stroke-linecap:round;opacity:0;animation:splash-fade .22s ease-out forwards}
       .stone-1{animation-delay:.34s}
       .stone-2{animation-delay:.44s}
       .stone-3{animation-delay:.54s}
       .stone-4{animation-delay:.64s}
-      .scene-spark{fill:#f0d79b;opacity:0;animation:splash-fade .3s .9s ease-out forwards}
-      .splash-name{margin:0 0 24px;font-size:12px;letter-spacing:.34em;color:#cfdcc2;opacity:0;animation:splash-rise .32s .18s ease-out forwards}
-      .splash-slogan{margin:0;font-size:clamp(17px,2.2vw,22px);font-weight:500;line-height:1.95;letter-spacing:.02em;color:#f2f6e9}
+      .scene-spark{fill:#ff3e00;stroke:#343433;stroke-width:1;opacity:0;animation:splash-fade .3s .9s ease-out forwards}
+      .bridge-line{fill:none;stroke:#ff3e00;stroke-width:1.6;stroke-linecap:round;opacity:0;stroke-dasharray:1;stroke-dashoffset:1;animation:bridge-draw .42s .68s ease-out forwards}
+      @keyframes bridge-draw{to{opacity:.75;stroke-dashoffset:0}}
+      .confetti{opacity:0;animation:splash-pop .45s ease-out forwards}
+      .c-star{animation-delay:.5s}
+      .c-coin{animation-delay:.66s}
+      .c-heart{animation-delay:.58s}
+      .c-leaf{animation-delay:.72s}
+      .c-spark{animation-delay:.8s}
+      .splash-name{margin:0 0 22px;font-size:12px;letter-spacing:.32em;color:#7e7e7d;opacity:0;animation:splash-rise .32s .18s ease-out forwards}
+      .splash-slogan{margin:0;font-size:clamp(18px,2.2vw,23px);font-weight:600;line-height:1.9;letter-spacing:-.01em;color:#121212}
       .splash-slogan .line{display:block;opacity:0;animation:splash-rise .38s ease-out forwards}
       .splash-slogan .line-1{animation-delay:.26s}
-      .splash-slogan .line-2{margin-top:4px;font-weight:400;font-size:.92em;color:#d5e2c8;animation-delay:.56s}
-      @keyframes splash-pop{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:none}}
-      @keyframes splash-draw{to{stroke-dashoffset:0}}
+      .splash-slogan .line-2{margin-top:6px;font-weight:400;font-size:.9em;color:#474645;animation-delay:.56s}
+      @keyframes splash-pop{from{opacity:0;transform:translateY(10px) scale(.9)}to{opacity:1;transform:none}}
       @keyframes splash-fade{to{opacity:1}}
       @keyframes splash-rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
       @keyframes splash-out{from{opacity:1;visibility:visible}to{opacity:0;visibility:hidden}}
-      @media (prefers-reduced-motion:reduce){#splash,.splash-scene,.island-left,.island-right,.stone,.scene-spark,.bridge-line,.splash-name,.splash-slogan,.splash-slogan .line{animation:none!important;opacity:1!important;transition:none!important}.bridge-line{opacity:.45;stroke-dashoffset:0}}
+      @media (prefers-reduced-motion:reduce){#splash,.splash-scene,.island-left,.island-right,.stone,.scene-spark,.bridge-line,.confetti,.splash-name,.splash-slogan,.splash-slogan .line{animation:none!important;opacity:1!important;transition:none!important}.bridge-line{opacity:.75;stroke-dashoffset:0}}
       @media print{#splash{display:none}}
     </style>
     <noscript><style>#splash{display:none}</style></noscript>
@@ -74,17 +82,32 @@
         <div class="splash-scene" aria-hidden="true">
           <svg viewBox="0 0 480 170" xmlns="http://www.w3.org/2000/svg">
             <circle class="scene-sun" cx="404" cy="34" r="9"/>
+            <g class="confetti c-star">
+              <path d="M64 40l4.6 9.2 10.2 1.5-7.4 7.2 1.7 10.1-9.1-4.8-9.1 4.8 1.7-10.1-7.4-7.2 10.2-1.5z" fill="#ffcd6c" stroke="#343433" stroke-width="1.4" stroke-linejoin="round"/>
+            </g>
+            <g class="confetti c-coin">
+              <circle cx="424" cy="132" r="7.5" fill="#ff3e00" stroke="#343433" stroke-width="1.4"/>
+            </g>
+            <g class="confetti c-heart">
+              <path d="M286 34c0-3.6 2.8-6.4 6.2-6.4 2.4 0 4.4 1.4 5.4 3.4 1-2 3-3.4 5.4-3.4 3.4 0 6.2 2.8 6.2 6.4 0 5.6-9.2 10.6-11.6 12-2.4-1.4-11.6-6.4-11.6-12z" fill="#ff58ae" stroke="#343433" stroke-width="1.4" stroke-linejoin="round"/>
+            </g>
+            <g class="confetti c-leaf">
+              <path d="M84 136c6-11 18-15 28-11-1 11-10 19-24 20-2 0-4-4-4-9z" fill="#00c978" stroke="#343433" stroke-width="1.4" stroke-linejoin="round"/>
+            </g>
+            <g class="confetti c-spark">
+              <path d="M340 128l2.6 6.4 6.4 2.6-6.4 2.6-2.6 6.4-2.6-6.4-6.4-2.6 6.4-2.6z" fill="#64c6ff" stroke="#343433" stroke-width="1.2" stroke-linejoin="round"/>
+            </g>
             <g class="island island-left">
               <path class="scene-land" d="M46 118c2-32 27-56 60-56 32 0 57 23 60 56z"/>
-              <path class="scene-rim" d="M55 104c10-19 28-30 51-30 17 0 32 9 42 24"/>
-              <path class="scene-wave" d="M36 126c26-7 64-7 92 0"/>
-              <path class="scene-wave wave-2" d="M26 137c28-6 66-6 94 0"/>
+              <path class="scene-rim" d="M60 102c10-18 27-28 48-28 15 0 29 7 38 20"/>
+              <path class="scene-wave" d="M36 128c26-7 64-7 92 0"/>
+              <path class="scene-wave wave-2" d="M26 139c28-6 66-6 94 0"/>
             </g>
             <g class="island island-right">
               <path class="scene-land" d="M326 118c1-24 20-42 45-42 24 0 43 18 45 42z"/>
-              <path class="scene-rim" d="M333 108c8-14 21-22 38-22 13 0 24 7 31 18"/>
-              <path class="scene-wave" d="M316 126c20-5 48-5 70 0"/>
-              <path class="scene-wave wave-2" d="M308 137c22-5 52-5 76 0"/>
+              <path class="scene-rim" d="M336 106c7-13 19-21 35-21 12 0 23 6 30 17"/>
+              <path class="scene-wave" d="M316 128c20-5 48-5 70 0"/>
+              <path class="scene-wave wave-2" d="M308 139c22-5 52-5 76 0"/>
             </g>
             <path class="bridge-line" pathLength="1" d="M186 111Q253 99 318 105"/>
             <path class="stone stone-1" d="M186 112l13-3"/>

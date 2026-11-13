@@ -1,0 +1,242 @@
+/* Family 风格层：奶油纸面、墨线描边、扁平填色、Inter 排版。最后加载，覆盖学屿原有森林绿主题。 */
+:root {
+  color-scheme: light;
+  --fam-cream: #fbfaf9;
+  --fam-stone: #f2f0ed;
+  --fam-sand: #f6f4ef;
+  --fam-ink: #121212;
+  --fam-heading: #343433;
+  --fam-body: #474645;
+  --fam-muted: #7e7e7d;
+  --fam-line: #e5d5c3;
+  --fam-orange: #ff3e00;
+  --fam-blue: #0086fc;
+  --fam-sky: #64c6ff;
+  --fam-green: #00c978;
+  --fam-yellow: #ffcd6c;
+  --fam-pink: #ff58ae;
+
+  /* 把原主题变量映射到 Family 的纸面与墨色 */
+  --green: #121212;
+  --green-dark: #000000;
+  --green-light: #f2f0ed;
+  --lime: #ffcd6c;
+  --ink: #343433;
+  --muted: #7e7e7d;
+  --line: #f2f0ed;
+  --bg: #fbfaf9;
+  --white: #ffffff;
+  --shadow: inset 0 0 0 1px #f2f0ed;
+  --radius: 10px;
+  --coral: #ff3e00;
+  --lilac: #9f4fff;
+}
+
+body {
+  background: var(--fam-cream);
+  color: var(--fam-body);
+  font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .greeting h1, .page-heading h1, .personal-greeting h1, .campus-agent h1 {
+  color: var(--fam-heading);
+  letter-spacing: -0.022em;
+  font-weight: 600;
+}
+
+/* 侧栏与顶栏：纸面，靠发丝线分隔 */
+.sidebar,
+.topbar,
+.mobile-nav,
+.mobile-drawer {
+  background: var(--fam-cream);
+  border-color: var(--fam-stone);
+}
+.sidebar { border-right: 1px solid var(--fam-stone); }
+.topbar { border-bottom: 1px solid var(--fam-stone); }
+
+/* 所有卡片：白纸 + 1px inset 发丝线，禁止投影 */
+.card,
+.personal-card,
+.notice-card,
+.event-card,
+.quick-grid,
+.personal-shortcuts > div > button,
+.profile-action,
+.campus-agent,
+.teach-card,
+.personal-campus-card,
+.personal-campus-links button,
+.widget-card,
+.widget-shell,
+.panel,
+.stat-card {
+  background: #ffffff;
+  border: 1px solid var(--fam-stone) !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+}
+
+/* 按钮：墨黑药丸 + 沙色药丸，无渐变无阴影 */
+.primary-btn,
+.full-btn {
+  background: var(--fam-ink) !important;
+  border: 1px solid var(--fam-ink) !important;
+  border-radius: 9999px !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+.primary-btn:hover,
+.full-btn:hover { background: #000000 !important; }
+.secondary-btn {
+  background: var(--fam-sand) !important;
+  border: 1px solid transparent !important;
+  border-radius: 9999px !important;
+  color: var(--fam-ink) !important;
+  box-shadow: none !important;
+}
+.secondary-btn:hover { background: var(--fam-stone) !important; }
+
+/* 文本链接使用 ember orange；列表强调用 link blue */
+.text-link { color: var(--fam-orange); }
+.text-link:hover { color: #d63300; }
+a { color: var(--fam-blue); }
+
+/* 标签、徽章、状态：纸面底 + 发丝线 */
+.demo-pill,
+.personal-campus-tag,
+.tag,
+.badge,
+.teach-status-pill,
+.personal-count {
+  background: var(--fam-stone);
+  border: 1px solid var(--fam-stone);
+  border-radius: 6px;
+  color: var(--fam-muted);
+}
+.status-pill,
+.demo-pill { letter-spacing: .06em; }
+
+/* 导航选中项：墨黑药丸 */
+.sidebar-nav button.active,
+.mobile-nav button.active,
+.sidebar nav button.active {
+  background: var(--fam-ink);
+  color: #ffffff;
+  border-radius: 9999px;
+}
+
+/* 搜索框与输入：石色底、发丝线、无阴影 */
+.search-trigger,
+.form-input,
+input,
+textarea,
+select {
+  background: var(--fam-sand);
+  border: 1px solid var(--fam-stone);
+  border-radius: 10px;
+  box-shadow: none;
+}
+.form-input:focus,
+input:focus,
+textarea:focus { border-color: var(--fam-heading); outline: 2px solid #34343322; }
+
+/* 移除遗留渐变与彩色投影，保持扁平纸面 */
+[class*="gradient"] { background-image: none !important; }
+.modal { border-radius: 10px !important; box-shadow: 0 0 0 1px var(--fam-stone), 0 24px 60px #12121214 !important; background: #ffffff; }
+.modal-overlay { background: #34343333; backdrop-filter: none; }
+
+/* 导航图标与次要文字统一墨色系 */
+.breadcrumb, .topbar-date, .demo-pill, .eyebrow { color: var(--fam-muted); }
+.breadcrumb b { color: var(--fam-heading); }
+
+/* 头像与圆形图标保持纸面质感 */
+.avatar, .quick-icon, .personal-orb { box-shadow: none; border: 1px solid var(--fam-stone); }
+
+/* 清除残留的森林绿底纹，统一到石色纸面 */
+.campus-card,
+.sidebar-note,
+.quick-grid,
+.personal-shortcuts > div > button,
+.personal-campus-links button,
+.login-top,
+.search-trigger,
+.chip,
+.tab,
+.segmented button {
+  background: var(--fam-sand);
+  border: 1px solid var(--fam-stone);
+  color: var(--fam-heading);
+  box-shadow: none;
+}
+.quick-icon,
+.avatar,
+.quick-item .quick-icon,
+.profile .avatar {
+  background: var(--fam-stone) !important;
+  border: 1px solid var(--fam-stone);
+  color: var(--fam-heading) !important;
+  border-radius: 10px;
+}
+.quick-item { color: var(--fam-body); }
+.quick-item:hover { color: var(--fam-ink); }
+.profile { border-color: var(--fam-stone); }
+
+/* 标题与图标统一墨色 */
+.personal-greeting h1,
+.greeting h1,
+.page-heading h1,
+.heading h1,
+.campus-agent h1,
+.personal-card h2,
+.personal-shortcuts h2 {
+  color: var(--fam-heading) !important;
+}
+.personal-card h2 > .icon,
+.section-title > .icon,
+.quick-icon .icon,
+.personal-course > .icon,
+.personal-empty > .icon, .personal-empty > .icon,
+.text-link .icon { color: var(--fam-heading); }
+
+/* 链接与强调：ember orange */
+.personal-hero-arrow, .personal-source { color: var(--fam-orange); }
+
+/* 让白卡之间的间距更松弛，接近故事书排版 */
+.personal-today-grid { gap: 24px; }
+
+/* 大色块：统一为石色纸面，插图块改为墨黑 */
+.profile-hero,
+.teach-hero,
+.hero,
+.quote-card,
+.teach-sample,
+.personal-hero {
+  background: var(--fam-sand) !important;
+  border: 1px solid var(--fam-stone) !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+}
+.profile-hero h2,
+.teach-hero h2,
+.hero h2,
+.quote-card p { color: var(--fam-heading) !important; }
+.profile-hero p,
+.teach-hero p,
+.teach-hero-label,
+.hero p { color: var(--fam-body) !important; }
+
+.teach-art-video { background: var(--fam-ink) !important; color: #ffffff !important; border: 0; }
+.teach-art-spark { color: var(--fam-orange) !important; }
+
+/* 选中态下划线改为墨色 */
+.teach-tabs button.active:after,
+.notice-tab.active:after,
+.workspace-tabs button.active:after { background: var(--fam-ink) !important; }
+.teach-tabs button.active,
+.notice-tab.active,
+.workspace-tabs button.active { color: var(--fam-ink) !important; }
+
+/* 预算卡等深色面板统一为墨黑 */
+.teach-budget-card { background: var(--fam-ink) !important; }
