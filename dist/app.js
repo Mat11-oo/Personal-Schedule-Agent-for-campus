@@ -360,14 +360,16 @@
         return;
       }
       const reply=await window.askCampusAgent(prompt,chat.conversation);
-      let response;
-      try {response=JSON.parse(reply.trim().replace(/^```(?:json)?\s*([\s\S]*?)\s*```$/i,'$1'));} catch {}
-      const answer=typeof response?.answer==='string'?response.answer.trim():response===undefined?reply.trim():'';
-      if(!answer)throw new Error('Missing answer');
+      const response=window.parseCampusAgentReply?window.parseCampusAgentReply(reply):{answer:String(reply||''),tool:null,task:null};
+      const answer=typeof response.answer==='string'?response.answer.trim():'';
+      if(!answer){
+        chat.messages.push({text:'小屿这次没整理好回答，请再问一次，或换个说法。'});
+        return;
+      }
       const task=explicitTask?agentTaskProposal(response,answer,taskFallback,message):undefined;
       const text=explicitTask
         ?task?'点击「添加待办」保存「'+task.title+'」。':'你想把哪件事加到待办？请告诉我事项名称。'
-        :answer.slice(0,4000);
+        :(response.extra?answer+'\n\n'+response.extra:answer).slice(0,4000);
       chat.messages.push({text,task,tool:response?.tool==='personal-add'?undefined:findTool(response?.tool)});
     } catch (error) {
       const detail=error.status===401?'小屿 会话验证失败，请重试。':

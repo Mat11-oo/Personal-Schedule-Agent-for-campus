@@ -6,7 +6,7 @@
   "scripts": {
     "start": "bash start.sh",
     "dev": "node server.mjs",
-    "check": "node --check server.mjs && node --check dist/personal.js && node --check dist/app.js && node --check dist/data.js && node --check dist/community.js && node --check dist/ai.js && node --check dist/features.js && node --check dist/widgets.js && node --check dist/teaching-core.js && node --check dist/teaching-media.js && node --check dist/teaching.js",
+    "check": "node --check server.mjs && node --check dist/agent-reply.js && node --check dist/personal.js && node --check dist/app.js && node --check dist/data.js && node --check dist/community.js && node --check dist/ai.js && node --check dist/features.js && node --check dist/widgets.js && node --check dist/teaching-core.js && node --check dist/teaching-media.js && node --check dist/teaching.js",
     "test": "node --test test/*.test.mjs"
   }
 }

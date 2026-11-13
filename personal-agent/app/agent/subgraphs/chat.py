@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import re
 
 from typing import Any
@@ -57,6 +58,25 @@ _WEAK_SIGNALS = (
     "撑", "熬", "算了", "放弃", "解脱", "对不起", "再见", "孤独", "没人", "麻烦",
     "die", "tired", "end", "gone", "hopeless", "sorry",
 )
+
+
+def _risk_text(message: str) -> str:
+    """只对真正的用户问题做风险判断。
+
+    学屿会把「指令 + 校园资料」打包成一条消息发给 Agent，资料里常见「报名结束」
+    这类词会误触发危机流程。消息里带 {"question": ...} 时，取该字段作为风险文本。
+    """
+    text = (message or "").strip()
+    for match in reversed(list(re.finditer(r'\{\s*"question"\s*:', text))):
+        try:
+            payload = json.loads(text[match.start():])
+        except (ValueError, TypeError):
+            continue
+        if isinstance(payload, dict):
+            question = payload.get("question")
+            if isinstance(question, str) and question.strip():
+                return question.strip()[:800]
+    return text
 
 
 def crisis_latency_cap() -> float:
@@ -161,11 +181,12 @@ def node_chat(state: AgentState) -> dict[str, Any]:
 
     t_start = _time.monotonic()
     system = PERSONA + UNTRUSTED_DATA_RULE
-    result = intent_result_for(state, msg)
+    risk_text = _risk_text(msg)
+    result = intent_result_for(state, risk_text)
     crisis = (
         bool(state.get("crisis_detected"))
         or result.rule_id == "crisis"
-        or (bool(msg) and _llm_risk(msg))
+        or (bool(risk_text) and _llm_risk(risk_text))
     )
     if not crisis:
         from app.agent.ask_cards import intent_card
