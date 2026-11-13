@@ -240,3 +240,7 @@ textarea:focus { border-color: var(--fam-heading); outline: 2px solid #34343322;
 
 /* 预算卡等深色面板统一为墨黑 */
 .teach-budget-card { background: var(--fam-ink) !important; }
+
+/* 对话气泡：助手用石色纸面，用户用墨色 */
+.campus-agent-message { background: var(--fam-sand) !important; border: 1px solid var(--fam-stone); border-radius: 12px; color: var(--fam-body); }
+.campus-agent-message.is-user { background: var(--fam-ink) !important; border-color: var(--fam-ink); color: #ffffff; }
