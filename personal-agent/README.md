@@ -10,7 +10,7 @@
 LangGraph · FastAPI · 原生 JS 前端 · 可二次开发 · MIT
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Python 3.12](https://img.shields.io/badge/Python-3.12-blue.svg)](Dockerfile)
+![Python 3.12](https://img.shields.io/badge/Python-3.12-blue.svg)
 [![Version](https://img.shields.io/badge/version-0.8.2-informational.svg)](VERSION)
 
 [快速开始](#快速开始) · [它能做什么](#它能做什么) · [工作原理](#工作原理) · [多渠道接入](#多渠道接入) · [安全与隐私](#安全与隐私) · [二次开发](#二次开发)
@@ -18,6 +18,10 @@ LangGraph · FastAPI · 原生 JS 前端 · 可二次开发 · MIT
 </div>
 
 ---
+
+> **关于本仓库中的这份副本**
+>
+> `personal-agent/` 是学屿内置的 Personal Agent 0.8.2 组件，下面沿用其上游 README 介绍。为控制仓库体积并避免带入本地数据，这份副本没有包含 `tests/`、`CONTRIBUTING.md`、`Dockerfile` 和 `docs/live-smoke-report.md`，下文相应链接与 `pytest`、`tests/golden/…`、`scripts/live_smoke.py` 的命令、产物请以上游仓库为准。学屿自身的安装与使用见[仓库根目录 README](../README.md)。
 
 ## 为什么是它
 
@@ -27,7 +31,7 @@ LangGraph · FastAPI · 原生 JS 前端 · 可二次开发 · MIT
 - **先确认，再行动。** 写草稿、建定时任务、调用外部工具，统统先出确认卡。它不会替你发消息、发邮件、提交表单，也不会在聊天里收你的密码和手机号。
 - **一个账号，多个入口。** 网页会话即账号；飞书、微信通过一次性链接绑定到同一份档案和记忆。
 - **安全护栏是内置的，不是贴上去的。** 出站防泄露、隐私脱敏、危机识别、一次性确认凭证、全链路轨迹日志，都有金标回归测试守着。
-- **拿来就能改。** 模型任意厂商可换，工具一个装饰器就能注册，渠道按接口加，[CONTRIBUTING.md](CONTRIBUTING.md) 按改动深度分五层带你入门。
+- **拿来就能改。** 模型任意厂商可换，工具一个装饰器就能注册，渠道按接口加，[CONTRIBUTING.md](https://github.com/hubooooooo/Personal-Agent/blob/main/CONTRIBUTING.md) 按改动深度分五层带你入门。
 
 ## 它能做什么
 
@@ -141,7 +145,7 @@ flowchart LR
 |------|------|----------|
 | 飞书 | `FEISHU_ENABLED=1` + `FEISHU_APP_ID` / `FEISHU_APP_SECRET` | 官方 SDK 长连接，**不需要公网地址**。见 [docs/feishu-长连接.md](docs/feishu-长连接.md) |
 | 微信 | `OPENCLAW_WECHAT_ENABLED=1` + `OPENCLAW_WEBHOOK_TOKEN` | OpenClaw Gateway + [桥接插件](integrations/openclaw-personal-agent-bridge/README.md) |
-| QQ 等 | 未实现 | 只留了 `ChannelAdapter` 接口（`app/channels/qq.py`），按 [CONTRIBUTING 第三层](CONTRIBUTING.md#第三层加渠道两到三天) 补 |
+| QQ 等 | 未实现 | 只留了 `ChannelAdapter` 接口（`app/channels/qq.py`），按 [CONTRIBUTING 第三层](https://github.com/hubooooooo/Personal-Agent/blob/main/CONTRIBUTING.md#第三层加渠道两到三天) 补 |
 
 渠道里的三条规则：
 
@@ -153,7 +157,7 @@ flowchart LR
 
 ## 安全与隐私
 
-这些不是「建议」，而是有测试守着的不变量，改动前请读 [CONTRIBUTING 第 3 节「不要动的东西」](CONTRIBUTING.md#3-不要动的东西)。
+这些不是「建议」，而是有测试守着的不变量，改动前请读 [CONTRIBUTING 第 3 节「不要动的东西」](https://github.com/hubooooooo/Personal-Agent/blob/main/CONTRIBUTING.md#3-不要动的东西)。
 
 - **身份只来自服务端签发的会话。** 每个 `/api` 调用的 `user_id` 只从签名 Cookie / Token 推导，从不信任请求体。`AUTH_SECRET` 缺失时所有 `/api` 返回 503。
 - **确认门禁。** 草稿、定时任务的创建 / 修改 / 删除都走确认卡；外部工具需要一次性、参数绑定的确认凭证。确认卡不过期，后点覆盖先点。
@@ -242,7 +246,7 @@ python scripts/harness_golden.py                                 # CI 门禁入�
 
 ## 二次开发
 
-[CONTRIBUTING.md](CONTRIBUTING.md) 是给新人的地图，按改动深度分五层，每层标出入口文件、必须同步的契约测试和不能动的安全不变量：
+[CONTRIBUTING.md](https://github.com/hubooooooo/Personal-Agent/blob/main/CONTRIBUTING.md) 是给新人的地图，按改动深度分五层，每层标出入口文件、必须同步的契约测试和不能动的安全不变量：
 
 | 层 | 做什么 | 大约 |
 |----|--------|------|
@@ -286,7 +290,7 @@ def weather_lookup(city: str, user_id: str = "") -> dict:
 - 当前版本 0.8.2，SQLite 单机即可跑，Postgres + RLS 已可用但未在生产长期验证。
 - QQ 渠道只有接口位；向量记忆、主动调度、两个渠道、Langfuse 全部默认关闭，按需打开。
 - Render 免费实例无持久盘，仅适合演示。
-- 已知粗糙处与常见坑见 [CONTRIBUTING 第 5、6 节](CONTRIBUTING.md#5-已知的粗糙处)。
+- 已知粗糙处与常见坑见 [CONTRIBUTING 第 5、6 节](https://github.com/hubooooooo/Personal-Agent/blob/main/CONTRIBUTING.md#5-已知的粗糙处)。
 
 ## License
 

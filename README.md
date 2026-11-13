@@ -110,7 +110,7 @@ npm start
 | 路径 | 内容 |
 | --- | --- |
 | `dist/` | 学屿页面、演示数据、对话、排程和校园模块 |
-| `server.mjs` | 学屿静态服务及 Personal Agent 会话、聊天代理 |
+| `server.mjs` | 学屿静态服务，以及 Personal Agent 的会话、聊天、模型设置和讲义生成代理 |
 | `start.sh` | 安装锁定依赖并启动两个本机服务 |
 | `personal-agent/app/` | FastAPI、Agent 工作流、模型网关和记忆 |
 | `personal-agent/.env.example` | 可提交的配置模板 |
@@ -140,7 +140,9 @@ flowchart TD
 
 先运行一次 `npm start` 生成 `personal-agent/.env`，保留其中的 `AUTH_SECRET`。使用 Kimi 时，可按模板填写 `KIMI_API_KEY`，其他兼容服务可配置 `LLM_FAST_*` 和 `LLM_STRONG_*`。保存后重启。详细字段见 [模型网关说明](personal-agent/docs/llm-gateway.md)。
 
-对话首页使用上述服务端模型。独立的「AI 问答」和「AI 学堂」使用界面里单独配置的模型接入。
+对话首页（找学屿）与「讲义与教学视频」都使用本机 Personal Agent 的模型。在「我的 → AI 模型设置」或对话页右上角齿轮里选择服务商、填写 API Key，保存时经 `/api/personal-agent/model-settings` 写入本机 `personal-agent/data/xueyu-model-settings.json`：不写 localStorage，不进仓库，也不回显明文。讲义生成走 `/api/personal-agent/lesson`，同样由本机服务转发。
+
+视频配音仍沿用浏览器内已有的语音模型与音色配置；该配置只用于配音，不影响对话与讲义生成。
 
 ## 数据与隐私
 
@@ -189,7 +191,7 @@ JSON 支持课程数组或 `{ "courses": [...] }`；课程字段为 `name, teach
 
 ## 设计
 
-森林绿与暖灰色，原创 SVG 校园及活动插画；桌面侧边栏与手机底部导航自适应。
+森林绿与暖灰色，原创 SVG 校园及活动插画；桌面为侧边栏，手机收成抽屉导航（点左上角「学屿」打开），对话页为沉浸式整屏布局。
 
 ## 1.1 新增校园社区
 
