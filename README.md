@@ -11,6 +11,12 @@
 ## 界面预览
 
 <p align="center">
+  <img src="docs/preview/splash-desktop.png" alt="学屿启动封面：我们本是各自独立的岛屿" width="100%" />
+</p>
+
+<p align="center"><sub>启动封面：约 0.8 秒后淡出进入首页</sub></p>
+
+<p align="center">
   <img src="docs/preview/agent-desktop.png" alt="学屿桌面端对话首页：找学屿" width="100%" />
 </p>
 
