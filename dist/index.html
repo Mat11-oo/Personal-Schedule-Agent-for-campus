@@ -30,7 +30,7 @@
     <script src="personal.js?v=1.8.14" defer></script>
     <script src="app.js?v=1.8.19" defer></script>
     <style>
-      #splash{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:32px;background:radial-gradient(120% 90% at 50% 28%,#2f7157 0%,#245c49 48%,#183f33 100%);color:#f2f6e9;text-align:center;animation:splash-out .18s 620ms both}
+      #splash{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:32px;background:radial-gradient(120% 90% at 50% 28%,#2f7157 0%,#245c49 48%,#183f33 100%);color:#f2f6e9;text-align:center;animation:splash-out .2s 1300ms both}
       #splash.splash-leaving{opacity:0;visibility:hidden;pointer-events:none;animation:none}
       #splash::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 42% at 50% 80%,#ffffff14,transparent 72%);pointer-events:none}
       .splash-inner{position:relative;max-width:680px}
@@ -78,14 +78,14 @@
         var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         var remove = function () { splash.remove(); };
         if (reduce) {
-          setTimeout(function () { splash.classList.add('splash-leaving'); remove(); }, 300);
+          setTimeout(function () { splash.classList.add('splash-leaving'); remove(); }, 480);
           return;
         }
-        // 0.8s 由 CSS 动画驱动（620ms 停留 + 180ms 淡出），不依赖主线程定时器
+        // 1.5s 由 CSS 动画驱动（1300ms 停留 + 200ms 淡出），不依赖主线程定时器
         splash.addEventListener('animationend', function (event) {
           if (event.target === splash && event.animationName === 'splash-out') remove();
         });
-        setTimeout(function () { if (document.body.contains(splash)) splash.remove(); }, 1100);
+        setTimeout(function () { if (document.body.contains(splash)) splash.remove(); }, 1800);
       })();
     </script>
     <a class="skip-link" href="#main">跳到主要内容</a>
